@@ -1,0 +1,4 @@
+PS C:\Users\ADMIN> cd 'C:\Users\ADMIN\OneDrive - South Mediterranean University\Desktop\PFA\back'
+
+
+mvn spring-boot:run

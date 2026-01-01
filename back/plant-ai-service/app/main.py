@@ -7,6 +7,7 @@ from datetime import datetime
 from app.model_loader import load_ai_model
 from app.image_utils import preprocess_image
 from app.classes import CLASS_NAMES
+from treatments import TREATMENTS
 
 app = FastAPI(
     title="Plant Disease AI Service",
@@ -42,7 +43,8 @@ async def predict(file: UploadFile = File(...)):
         return {
             "timestamp": datetime.utcnow(),
             "predicted_class": CLASS_NAMES[predicted_index],
-            "confidence": round(confidence * 100, 2)
+            "confidence": round(confidence * 100, 2),
+            "details": TREATMENTS.get(CLASS_NAMES[predicted_index], {})
         }
 
     except Exception as e:

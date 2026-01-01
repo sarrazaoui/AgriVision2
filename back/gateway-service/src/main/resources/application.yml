@@ -29,6 +29,7 @@ spring:
           uri: lb://image-service
           predicates:
             - Path=/images/**
+        
 # AI Service (FastAPI)
         - id: plant-ai-service
           uri: http://localhost:8005
@@ -36,3 +37,6 @@ spring:
             - Path=/api/ai/**
           filters:
             - StripPrefix=2
+
+
+

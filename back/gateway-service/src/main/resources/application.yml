@@ -29,7 +29,12 @@ spring:
           uri: lb://image-service
           predicates:
             - Path=/images/**
-        
+
+
+        - id: image-historique-service
+          uri: lb://image-historique
+          predicates:
+            - Path=/history/**
 # AI Service (FastAPI)
         - id: plant-ai-service
           uri: http://localhost:8005

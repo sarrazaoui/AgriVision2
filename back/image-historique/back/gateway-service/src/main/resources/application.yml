@@ -1,0 +1,42 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      http:
+        multipart:
+          enabled: false
+      routes:
+        - id: disease-service
+          uri: lb://disease-service
+          predicates:
+            - Path=/diseases/**
+
+        - id: plant-service
+          uri: lb://plant-service
+          predicates:
+            - Path=/plants/**
+
+        - id: image-service
+          uri: lb://image-service
+          predicates:
+            - Path=/images/**
+        
+# AI Service (FastAPI)
+        - id: plant-ai-service
+          uri: http://localhost:8005
+          predicates:
+            - Path=/api/ai/**
+          filters:
+            - StripPrefix=2
+
+
+

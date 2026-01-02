@@ -1,14 +1,15 @@
 package org.example.imagehistorique.service;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import org.example.imagehistorique.Entity.ImageHistory;
 import org.example.imagehistorique.Repository.ImageHistoryRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Service
 public class ImageHistoryService {
+
     private final ImageHistoryRepository repository;
 
     public ImageHistoryService(ImageHistoryRepository repository) {

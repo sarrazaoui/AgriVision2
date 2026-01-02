@@ -1,20 +1,14 @@
 package org.example.imagehistorique.Controller;
 
-import java.util.List;
-
 import org.example.imagehistorique.Entity.ImageHistory;
-import org.example.imagehistorique.service.ImageHistoryService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.example.imagehistorique.service.ImageHistoryService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/history")
-@CrossOrigin("*") // Autorise les appels de n'importe où
 public class ImageHistoryController {
 
     private final ImageHistoryService service;
@@ -24,7 +18,8 @@ public class ImageHistoryController {
     }
 
     @PostMapping
-    public ResponseEntity<ImageHistory> save(@RequestBody ImageHistory history) {
+    public ResponseEntity<ImageHistory> saveHistory(
+            @RequestBody ImageHistory history) {
         return ResponseEntity.ok(service.save(history));
     }
 
@@ -33,3 +28,4 @@ public class ImageHistoryController {
         return ResponseEntity.ok(service.findAll());
     }
 }
+
